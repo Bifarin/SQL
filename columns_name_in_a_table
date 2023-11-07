@@ -1,0 +1,5 @@
+-- Return column names
+SELECT COLUMN_NAME
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE table_catalog = 'SoccerAnalysis' -- the database
+   AND table_name = 'PlayerPassingStat'
