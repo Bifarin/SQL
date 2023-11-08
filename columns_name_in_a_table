@@ -1,5 +1,14 @@
--- Return column names
+-- for azure sql
+-- return column names
 SELECT COLUMN_NAME
 FROM INFORMATION_SCHEMA.COLUMNS
 WHERE table_catalog = 'SoccerAnalysis' -- the database
    AND table_name = 'PlayerPassingStat'
+
+
+-- for snowflakes
+SELECT COLUMN_NAME
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE table_catalog = 'INTELLIGENCE_DEV_DB' -- the database
+    AND table_schema = 'STG'
+   AND table_name = 'DISCUS'
