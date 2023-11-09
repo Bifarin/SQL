@@ -1,0 +1,4 @@
+-- snowflakes implementation
+SELECT * FROM INFORMATION_SCHEMA.TABLES
+WHERE table_catalog = 'INTELLIGENCE_DEV_DB' -- the database
+AND table_schema = 'STG'
