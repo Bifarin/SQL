@@ -1,0 +1,3 @@
+-- Assuming the table is called "your_table_name" and the column to be deleted is "column_to_delete"
+ALTER TABLE your_table_name
+DROP COLUMN column_to_delete;
