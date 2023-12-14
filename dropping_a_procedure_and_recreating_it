@@ -1,0 +1,17 @@
+IF OBJECT_ID('DeleteTestRecord', 'P') IS NOT NULL
+    DROP PROCEDURE DeleteTestRecord; --SELECT 1
+GO
+CREATE PROCEDURE DeleteTestRecord
+AS
+BEGIN
+DELETE FROM Animal
+WHERE id > 11;
+END
+
+// ===================================================================================================================
+// calling procedure
+// ===================================================================================================================
+// in sql server
+EXEC <DeleteTestRecord>
+// in snowflakes
+CALL <DeleteTestRecord>
