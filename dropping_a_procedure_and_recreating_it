@@ -15,3 +15,27 @@ END
 EXEC <DeleteTestRecord>
 // in snowflakes
 CALL <DeleteTestRecord>
+
+
+// ===================================================================================================================
+// using dynamic sql in procedure (parametered controlled proc)
+// ===================================================================================================================
+IF OBJECT_ID('DeleteRecord2', 'P') IS NOT NULL
+    DROP PROCEDURE DeleteRecord2; --SELECT 1
+GO
+CREATE PROCEDURE DeleteRecord2
+    @ThresholdId INT,
+    @TableName NVARCHAR(255)
+AS
+BEGIN
+    -- Construct the dynamic SQL query
+    DECLARE @SqlQuery NVARCHAR(MAX);
+    SET @SqlQuery = 'DELETE FROM ' + QUOTENAME(@TableName) + ' WHERE animalId > @ThresholdId;';
+
+    -- Execute the dynamic SQL query
+    EXEC sp_executesql @SqlQuery, N'@ThresholdId INT', @ThresholdId;
+
+    -- Delete from Animal table outside of dynamic SQL
+    DELETE FROM Animal
+    WHERE id > @ThresholdId;
+END
