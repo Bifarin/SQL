@@ -1,0 +1,5 @@
+
+  create schema woolies
+
+  // view the amount of schema present
+    select schema_name from INFORMATION_SCHEMA.SCHEMATA
